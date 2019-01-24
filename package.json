@@ -1,0 +1,21 @@
+{
+  "name": "@cfn-modules/acm-certificate-public",
+  "version": "1.0.0",
+  "description": "Public certificate managed by ACM",
+  "author": "Michael Wittig <michael@widdix.de>",
+  "license": "Apache-2.0",
+  "bundledDependencies": ["@cfn-modules/lambda-function"],
+  "keywords": ["cfn-modules", "cfn-modules:ExposeArn"],
+  "homepage": "https://github.com/cfn-modules",
+  "bugs": {
+    "url": "https://github.com/cfn-modules/acm-certificate-public/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cfn-modules/acm-certificate-public.git"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.392.0",
+    "cfn-response": "^1.0.1"
+  }
+}
