@@ -37,8 +37,9 @@ Resources:
 
 none
 
-## Related cfn-modules
+## Related modules
 
+* [route53-hosted-zone-private](https://github.com/cfn-modules/route53-hosted-zone-private)
 * [route53-hosted-zone-public](https://github.com/cfn-modules/route53-hosted-zone-public)
 * [route53-hosted-zone-wrapper](https://github.com/cfn-modules/route53-hosted-zone-wrapper)
 
