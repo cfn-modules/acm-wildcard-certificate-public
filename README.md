@@ -68,4 +68,42 @@ none
 
 ## Outputs
 
-* Arn
+## Outputs
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Interface</th>
+      <th>Description</th>
+      <th>Exported?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ModuleId</td>
+      <td>global</td>
+      <td>Id of the module</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>ModuleVersion</td>
+      <td>global</td>
+      <td>Version of the module</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>StackName</td>
+      <td>global</td>
+      <td>Name of the stack (used to pass module references)</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Arn</td>
+      <td>ExposeArn</td>
+      <td>Certificate ARN</td>
+      <td>yes</td>
+    </tr>
+  </tbody>
+</table>
+
