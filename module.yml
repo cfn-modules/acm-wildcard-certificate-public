@@ -37,7 +37,7 @@ Resources:
     Properties:
       Parameters:
         Handler: 'custom-resource-create.handler'
-        Runtime: 'nodejs8.10'
+        Runtime: 'nodejs10.x'
         Timeout: '300' # 5 mins
         ManagedPolicyArns: !Ref CreateCertificateFunctionPolicy
       TemplateURL: './node_modules/@cfn-modules/lambda-function/module.yml'
@@ -70,7 +70,7 @@ Resources:
     Properties:
       Parameters:
         Handler: 'custom-resource-await.handler'
-        Runtime: 'nodejs8.10'
+        Runtime: 'nodejs10.x'
         Timeout: '900' # 15 mins
         ManagedPolicyArns: !Ref AwaitValidationFunctionPolicy
       TemplateURL: './node_modules/@cfn-modules/lambda-function/module.yml'
