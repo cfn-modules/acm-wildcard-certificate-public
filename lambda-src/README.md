@@ -1,1 +1,0 @@
-> It's important that the content of `node_modules` is part fo the repository and included in the archive published to npm!

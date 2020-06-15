@@ -13,77 +13,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'cfn-modules: AWS ACM certificate (public)'
+Description: 'cfn-modules: AWS ACM wildcard certificate (public)'
 # cfn-modules:implements(ExposeArn)
 Parameters:
   HostedZoneModule:
     Description: 'Stack name of module implementing HostedZone.'
     Type: String
 Resources:
-  CreateCertificateFunctionPolicy:
-    Type: 'AWS::IAM::ManagedPolicy'
-    Properties:
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-        - Effect: Allow
-          Action:
-          - 'acm:RequestCertificate'
-          - 'acm:DescribeCertificate'
-          - 'acm:DeleteCertificate'
-          Resource: '*'
-  CreateCertificateFunction:
-    Type: 'AWS::CloudFormation::Stack'
-    Properties:
-      Parameters:
-        Handler: 'custom-resource-create.handler'
-        Runtime: 'nodejs10.x'
-        Timeout: '300' # 5 mins
-        ManagedPolicyArns: !Ref CreateCertificateFunctionPolicy
-      TemplateURL: './node_modules/@cfn-modules/lambda-function/module.yml'
   Certificate:
-    Type: 'Custom::Certificate'
-    Version: '1.0'
+    Type: 'AWS::CertificateManager::Certificate'
     Properties:
-      HostedZoneName: {'Fn::ImportValue': !Sub '${HostedZoneModule}-Name'}
-      ServiceToken: !GetAtt 'CreateCertificateFunction.Outputs.Arn'
-  RecordSet:
-    Type: 'AWS::Route53::RecordSet'
-    Properties:
-      HostedZoneId: {'Fn::ImportValue': !Sub '${HostedZoneModule}-Id'}
-      Name: !GetAtt 'Certificate.ValidationResourceRecordName'
-      ResourceRecords:
-      - !GetAtt 'Certificate.ValidationResourceRecordValue'
-      TTL: '60'
-      Type: !GetAtt 'Certificate.ValidationResourceRecordType'
-  AwaitValidationFunctionPolicy:
-    Type: 'AWS::IAM::ManagedPolicy'
-    Properties:
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-        - Effect: Allow
-          Action: 'acm:DescribeCertificate'
-          Resource: '*'
-  AwaitValidationFunction:
-    Type: 'AWS::CloudFormation::Stack'
-    Properties:
-      Parameters:
-        Handler: 'custom-resource-await.handler'
-        Runtime: 'nodejs10.x'
-        Timeout: '900' # 15 mins
-        ManagedPolicyArns: !Ref AwaitValidationFunctionPolicy
-      TemplateURL: './node_modules/@cfn-modules/lambda-function/module.yml'
-  Validation:
-    DependsOn: RecordSet
-    Type: 'Custom::Validation'
-    Version: '1.0'
-    Properties:
-      CertificateArn: !Ref Certificate
-      ServiceToken: !GetAtt 'AwaitValidationFunction.Outputs.Arn'
+      DomainName: {'Fn::ImportValue': !Sub '${HostedZoneModule}-Name'}
+      DomainValidationOptions:
+      - DomainName: {'Fn::ImportValue': !Sub '${HostedZoneModule}-Name'}
+        HostedZoneId: {'Fn::ImportValue': !Sub '${HostedZoneModule}-Id'}
+      - DomainName: !Join ['', ['*.', {'Fn::ImportValue': !Sub '${HostedZoneModule}-Name'}]]
+        HostedZoneId: {'Fn::ImportValue': !Sub '${HostedZoneModule}-Id'}
+      SubjectAlternativeNames:
+      - !Join ['', ['*.', {'Fn::ImportValue': !Sub '${HostedZoneModule}-Name'}]]
+      ValidationMethod: DNS
 Outputs:
   ModuleId:
-    Value: 'acm-certificate-public'
+    Value: 'acm-wildcard-certificate-public'
   ModuleVersion:
     Value: '1.0.0'
   StackName:

@@ -4,7 +4,7 @@
     "eslint": "6.6.0",
     "ava": "2.4.0",
     "@cfn-modules/test": "0.7.3",
-    "@cfn-modules/acm-certificate-public": "file:../",
+    "@cfn-modules/acm-wildcard-certificate-public": "file:../",
     "@cfn-modules/route53-hosted-zone-wrapper": "1.4.1"
   },
   "scripts": {

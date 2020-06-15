@@ -13,4 +13,4 @@ Resources:
     Properties:
       Parameters:
         HostedZoneModule: !GetAtt 'HostedZone.Outputs.StackName'
-      TemplateURL: './node_modules/@cfn-modules/acm-certificate-public/module.yml'
+      TemplateURL: './node_modules/@cfn-modules/acm-wildcard-certificate-public/module.yml'

@@ -1,6 +1,0 @@
-{
-  "private": true,
-  "dependencies": {
-    "cfn-response": "1.0.1"
-  }
-}

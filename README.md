@@ -1,21 +1,23 @@
-[![Build Status](https://travis-ci.org/cfn-modules/acm-certificate-public.svg?branch=master)](https://travis-ci.org/cfn-modules/acm-certificate-public)
-[![NPM version](https://img.shields.io/npm/v/@cfn-modules/acm-certificate-public.svg)](https://www.npmjs.com/package/@cfn-modules/acm-certificate-public)
+[![Build Status](https://travis-ci.org/cfn-modules/acm-wildcard-certificate-public.svg?branch=master)](https://travis-ci.org/cfn-modules/acm-wildcard-certificate-public)
+[![NPM version](https://img.shields.io/npm/v/@cfn-modules/acm-wildcard-certificate-public.svg)](https://www.npmjs.com/package/@cfn-modules/acm-wildcard-certificate-public)
 
-# cfn-modules: AWS Certificate Manager certificate (public)
+# cfn-modules: AWS Certificate Manager wildcard certificate (public)
 
-Public certificate managed by ACM. Let's assume you have created a hosted zone for `widdix.net`. This module creates and validates a certificate for the following (sub)domain names:
+Public wildcard certificate managed by ACM.
+
+Let's assume you have created a hosted zone for `widdix.net`. This module creates a certificate for the following (sub)domain names:
 
 * `widdix.net`
 * `*.widdix.net`
 
-> Keep in mind that `*.widdix.net` includes only one subdomain level. E.g. `www.widdix.net` is protected, but `www.test.widdix.net` is not.
+> Keep in mind that `*.widdix.net` includes only one subdomain level. E.g. `www.widdix.net` is included, but `www.test.widdix.net` is not.
 
 ## Install
 
 > Install [Node.js and npm](https://nodejs.org/) first!
 
 ```
-npm i @cfn-modules/acm-certificate-public
+npm i @cfn-modules/acm-wildcard-certificate-public
 ```
 
 ## Usage
@@ -30,7 +32,7 @@ Resources:
     Properties:
       Parameters:
         HostedZoneModule: !GetAtt 'HostedZone.Outputs.StackName' # required
-      TemplateURL: './node_modules/@cfn-modules/acm-certificate-public/module.yml'
+      TemplateURL: './node_modules/@cfn-modules/acm-wildcard-certificate-public/module.yml'
 ```
 
 ## Examples
@@ -65,8 +67,6 @@ none
     </tr>
   </tbody>
 </table>
-
-## Outputs
 
 ## Outputs
 

@@ -1,17 +1,17 @@
 {
-  "name": "@cfn-modules/acm-certificate-public",
+  "name": "@cfn-modules/acm-wildcard-certificate-public",
   "version": "1.0.0",
-  "description": "Public certificate managed by ACM",
+  "description": "Public wildcard certificate managed by ACM",
   "author": "Michael Wittig <michael@widdix.de>",
   "license": "Apache-2.0",
   "bundledDependencies": ["@cfn-modules/lambda-function"],
   "keywords": ["cfn-modules", "cfn-modules:ExposeArn"],
   "homepage": "https://github.com/cfn-modules",
   "bugs": {
-    "url": "https://github.com/cfn-modules/acm-certificate-public/issues"
+    "url": "https://github.com/cfn-modules/acm-wildcard-certificate-public/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cfn-modules/acm-certificate-public.git"
+    "url": "https://github.com/cfn-modules/acm-wildcard-certificate-public.git"
   }
 }
