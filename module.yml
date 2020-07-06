@@ -28,7 +28,6 @@ Resources:
       - DomainName: {'Fn::ImportValue': !Sub '${HostedZoneModule}-Name'}
         HostedZoneId: {'Fn::ImportValue': !Sub '${HostedZoneModule}-Id'}
       - DomainName: !Join ['', ['*.', {'Fn::ImportValue': !Sub '${HostedZoneModule}-Name'}]]
-        HostedZoneId: {'Fn::ImportValue': !Sub '${HostedZoneModule}-Id'}
       SubjectAlternativeNames:
       - !Join ['', ['*.', {'Fn::ImportValue': !Sub '${HostedZoneModule}-Name'}]]
       ValidationMethod: DNS
