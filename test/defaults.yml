@@ -1,0 +1,20 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'cfn-modules test'
+Parameters:
+  HostedZoneId:
+    Description: 'Route53 hosted zone id'
+    Type: String
+Resources:
+  HostedZone:
+    Type: 'AWS::CloudFormation::Stack'
+    Properties:
+      Parameters:
+        Id: !Ref HostedZoneId
+      TemplateURL: './node_modules/@cfn-modules/route53-hosted-zone-wrapper/module.yml'
+  Certificate:
+    Type: 'AWS::CloudFormation::Stack'
+    Properties:
+      Parameters:
+        HostedZoneModule: !GetAtt 'HostedZone.Outputs.StackName'
+      TemplateURL: './node_modules/@cfn-modules/acm-wildcard-certificate-public/module.yml'
