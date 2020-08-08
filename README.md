@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/cfn-modules/acm-wildcard-certificate-public.svg?branch=master)](https://travis-ci.org/cfn-modules/acm-wildcard-certificate-public)
-[![NPM version](https://img.shields.io/npm/v/@cfn-modules/acm-wildcard-certificate-public.svg)](https://www.npmjs.com/package/@cfn-modules/acm-wildcard-certificate-public)
-
 # cfn-modules: AWS Certificate Manager wildcard certificate (public)
 
 Public wildcard certificate managed by ACM.
